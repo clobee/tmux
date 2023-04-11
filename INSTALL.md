@@ -173,6 +173,14 @@ set -g @dracula-network-bandwidth-interval 0
 set -g @dracula-network-bandwidth-show-interface true
 ```
 
+#### network-vpn
+
+You can configure which network interface you want to view
+
+```bash
+set -g @dracula-network-vpn tun0
+```
+
 #### network-ping options
 
 You can configure which server (hostname, IP) you want to ping and at which rate (in seconds). Default is google.com at every 5 seconds.
