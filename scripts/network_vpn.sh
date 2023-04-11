@@ -8,7 +8,12 @@ source $current_dir/utils.sh
 vpn_function() {
   case $(uname -s) in
   Linux)
-    # TODO
+    vpn=$(get_vpn_ip $1)
+    if [ -z $vpn ]; then
+      echo ""
+    else
+      echo $vpn
+    fi
   ;;
   
   Darwin)
@@ -29,7 +34,13 @@ vpn_function() {
 
 main() {
 
-  echo $(vpn_function)
+  interface="$(tmux show-option -gqv "@dracula-network-vpn-interface")"
+
+  if [[ -z $interface ]]; then
+    interface="tun0"
+  fi
+
+  echo $(vpn_function $interface)
 }
 
 # run main driver
