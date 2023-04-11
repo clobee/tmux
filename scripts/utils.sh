@@ -23,3 +23,7 @@ normalize_percent_len() {
   printf "%${left_spaces}s%s%${right_spaces}s\n" "" $1 ""
 }
 
+get_vpn_ip()
+{
+   ip addr show $1 | grep -m 1 inet | awk '{print $2}' | cut -d / -f 1
+}
